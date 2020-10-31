@@ -1,0 +1,71 @@
+@import ../var
+
+.header
+  height: 72px
+  color: $textContrastColor
+  background: url(../../images/promo.jpg)
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+  &__container
+    max-width: $siteWidth
+    height: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: 0 auto
+    &_admin
+      justify-content: flex-start
+  &__title
+    font-size: 16px
+    margin-right: 24px
+    margin-left: 12px
+
+.logo
+  color: $textContrastColor
+  display: flex
+  align-items: center
+  margin-left: 24px
+  &__title
+    +ffHuntsman
+    font-size: 22px
+    margin-left: 12px
+
+.main-menu
+  height: 100%
+  display: flex
+  &__item
+    width: 120px
+    height: 100%
+    color: $textContrastColor
+    border-right: 1px solid rgba(255, 255, 255, 0.2)
+    display: flex
+    justify-content: center
+    align-items: center
+    &:first-child
+      padding-left: 1px
+      &:hover
+        border-left: 1px solid rgba(255, 255, 255, 0.2)
+        padding-left: 0
+    &:last-child
+      border-right: none
+      padding-right: 1px
+      &:hover
+        border-right: 1px solid rgba(255, 255, 255, 0.2)
+        padding-right: 0
+    &:hover
+      background: $mainColor
+    &_active
+      font-weight: 700
+    &_admin
+      width: auto
+      padding: 0 24px
+      &:first-child
+        padding-left: 24px
+        &:hover
+          border-left: 1px solid rgba(255, 255, 255, 0.2)
+          padding-left: 23px
+      &:last-child
+        border-right: none
+        padding-right: 24px
+        &:hover
+          border-right: 1px solid rgba(255, 255, 255, 0.2)
+          padding-right: 23px

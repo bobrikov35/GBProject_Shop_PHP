@@ -1,0 +1,33 @@
+<header class="header">
+  <div class="header__container">
+    <a class="logo" href="{{ '/home' }}">
+      <img src="{{ '/images/origami-logo.svg' }}" width="50px" height="50px" alt="logo">
+
+      <h2 class="logo__title">Brand</h2>
+    </a>
+
+    <nav class="main-menu">
+      <a class="main-menu__item {% if page == 'home' %} main-menu__item_active {% endif %}"
+         href="{{ '/home' }}">Главная</a>
+
+      <a class="main-menu__item {% if page == 'product' %} main-menu__item_active {% endif %}"
+         href="{{ '/product/list/?page=1' }}">Товары</a>
+
+      <a class="main-menu__item {% if page == 'order' %} main-menu__item_active {% endif %}"
+         href="{{ '/order/list/?page=1' }}">Заказы</a>
+
+      <a class="main-menu__item {% if page == 'cart' %} main-menu__item_active {% endif %}"
+         href="{{ '/cart/list/?page=1' }}">Корзина {% if cartCount > 0 %} ({{ cartCount }}) {% endif %}</a>
+
+      {% if login %}
+        <a class="main-menu__item {% if page == 'user' %} main-menu__item_active {% endif %}"
+           href="{{ '/user' }}">{{ user.name }}</a>
+
+        <a class="main-menu__item" href="{{ '/user/logout' }}">Выйти</a>
+
+      {% else %}
+        <a class="main-menu__item" href="{{ '/user/login' }}">Войти</a>
+      {% endif %}
+    </nav>
+  </div>
+</header>

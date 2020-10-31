@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ '/maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' }}">
+  <link rel="stylesheet" href="{{ '/css/index.css?t=' }}{{ time }}">
+  {% block style %}{% endblock %}
+  <title>BRAND: {% block title %}Интернет-магазин{% endblock %}</title>
+</head>
+<body>
+
+<div id="app">
+
+  {% include 'components/main-menu.twig'
+    with {
+    'page': page,
+    'cartCount': cartCount,
+    'login': login,
+    'user': user,
+  } %}
+
+  {% if admin %}
+    {% include 'components/control-panel.twig' with {'page': page} %}
+  {% endif %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'components/bottom-menu.twig' %}
+
+  {% include 'components/footer.twig' %}
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+
+{% block jscript %}{% endblock %}
+
+</body>
+</html>

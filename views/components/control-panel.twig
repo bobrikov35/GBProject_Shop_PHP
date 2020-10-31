@@ -1,0 +1,18 @@
+<section class="header">
+  <div class="header__container header__container_admin">
+    <div class="header__title">
+      <h2>Панель управления</h2>
+    </div>
+
+    <nav class="main-menu">
+      <a class="main-menu__item main-menu__item_admin {% if page == 'admin.users' %} main-menu__item_active {% endif %}"
+         href="{{ '/admin/users/?page=1' }}">Пользователи</a>
+
+      <a class="main-menu__item main-menu__item_admin {% if page == 'admin.goods' %} main-menu__item_active {% endif %}"
+         href="{{ '/admin/goods/?page=1' }}">Товары</a>
+
+      <a class="main-menu__item main-menu__item_admin {% if page == 'admin.orders' %} main-menu__item_active {% endif %}"
+         href="{{ '/admin/orders/?page=1' }}">Заказы</a>
+    </nav>
+  </div>
+</section>

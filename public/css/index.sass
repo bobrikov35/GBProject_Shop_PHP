@@ -1,0 +1,30 @@
+@import var
+
+*
+  box-sizing: border-box
+  padding: 0
+  margin: 0
+
+body
+  +ffOpenSans
+  user-select: none
+  color: $mainColor
+  font-size: 16px
+  display: flex
+  flex-direction: column
+
+a
+  text-decoration: none
+
+h1, h2, h3, h4, h5, h6
+  +ffExo
+
+@import objects/header
+@import objects/footer
+@import objects/buttons
+
+main
+  max-width: $siteWidth
+  flex-grow: 1
+  padding: 72px 0
+  margin: 0 auto
