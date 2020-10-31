@@ -1,0 +1,16 @@
+{
+  "require": {
+    "twig/twig": "^3.1.1",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4" : {
+      "app\\" : "./src/",
+      "app\\engine\\" : "./engine/",
+      "app\\controllers\\" : "./src/controllers/",
+      "app\\entities\\" : "./src/entities/",
+      "app\\repositories\\" : "./src/repositories/",
+      "app\\services\\" : "./src/services/"
+    }
+  }
+}
