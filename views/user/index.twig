@@ -1,0 +1,29 @@
+{% extends 'layouts/main.twig' %}
+
+{% block style %}
+  <link rel="stylesheet" href="{{ '/css/user.css?t=' }}{{ time }}">
+{% endblock %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+  <div class="account">
+    <h2 class="account__title">
+      <span class="account__name">{{ user.firstname }}</span>, добро пожаловать в магазин!
+    </h2>
+
+    <div class="account__content">
+      <p class="account__text">Ваш логин: <span>{{ user.email }}</span></p>
+
+      <p class="account__text">Права администратора:
+        <span>{% if admin %}присутствуют{% else %}отсутствуют{% endif %}</span>
+      </p>
+
+      <div class="account__control">
+{#        <a class="button account__button" href="{{ '/user/edit' }}">Редактировать аккаунт</a>#}
+
+        <a class="button account__button" href="{{ '/user/delete' }}">Удалить аккаунт</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

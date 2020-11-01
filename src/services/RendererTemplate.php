@@ -24,7 +24,9 @@ class RendererTemplate implements IRenderer
     $this->twig = new Environment( $loader, [
       'cache' => 'compilation_cache',
       'auto_reload' => true,
+      'debug' => true,
     ]);
+    $this->twig->addExtension(new \Twig\Extension\DebugExtension());
   }
 
   /**
@@ -41,7 +43,6 @@ class RendererTemplate implements IRenderer
 
     } catch ( Exception $exception ) {
       return $exception->getMessage();
-
     }
   }
 }

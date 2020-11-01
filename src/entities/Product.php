@@ -170,5 +170,4 @@ class Product extends Entity
     /** Функция вызывается в шаблоне (см. view/product/edit.twig) */
     $this->getImagesToString();
   }
-
 }

@@ -1,7 +1,3 @@
-.idea
-vendor
-public/compilation_cache
-public/css/.*.css
-public/css/.*.css.map
-public/css/objects/.*.css
-public/css/objects/.*.css.map
+/.idea/
+/vendor/
+/public/compilation_cache/

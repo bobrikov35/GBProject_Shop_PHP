@@ -1,0 +1,36 @@
+{% extends 'layouts/main.twig' %}
+
+{% block style %}
+  <link rel="stylesheet" href="{{ '/css/user.css?t=' }}{{ time }}">
+{% endblock %}
+
+{% block title %}Вход в личный кабинет{% endblock %}
+
+{% block content %}
+  <div class="login">
+    <h2 class="login__title">Вход в аккаунт</h2>
+
+    <form class="login__form" method="post">
+      <div class="login__input-box">
+        <label class="login__label" for="email">Email: </label>
+        <input class="login__edit" type="email" name="email" id="email" value="{{ user.email }}"
+               placeholder="Введите email" required>
+      </div>
+
+      <div class="login__input-box">
+        <label class="login__label" for="password">Пароль: </label>
+        <input class="login__edit" type="password" name="password" id="password" value="{{ user.password }}"
+               placeholder="Введите пароль">
+      </div>
+
+      <div class="login__control">
+        <button class="button login__button" type="submit">Войти</button>
+        <a class="button login__button" href="{{ '/user/create' }}">Создать аккаунт</a>
+      </div>
+    </form>
+
+    {% if message %}
+      <p class="login__message">{{ message }}</p>
+    {% endif %}
+  </div>
+{% endblock %}

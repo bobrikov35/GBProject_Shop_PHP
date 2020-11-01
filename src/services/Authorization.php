@@ -35,7 +35,7 @@ class Authorization extends Service
    * @param string $password
    * @return bool
    */
-  private function verifyPassword(string $email, string $password): bool
+  private function verifyPassword( string $email, string $password ): bool
   {
     $password = $this->getSettings( 'passwordSol' ) . $password;
 
@@ -57,16 +57,16 @@ class Authorization extends Service
    * @param string $password
    * @return bool
    */
-  public function login(string $email, string $password): bool
+  public function login( string $email, string $password ): bool
   {
-    if ( !( $this->verifyPassword( $email, $password ) ) ) {
+    if (! $this->verifyPassword( $email, $password ) ) {
       $this->logout();
       return false;
     }
 
     $user = $this->getUser( $email );
 
-    if ( !$user ) {
+    if (! $user ) {
       $this->logout();
       return false;
     }

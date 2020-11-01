@@ -17,10 +17,18 @@ trait TSingleton
    */
   public static function getInstance()
   {
-    if ( empty( static::$items ) ) {
+    if (empty(static::$items)) {
       static::$items = new static();
     }
+
     return static::$items;
   }
 
+  /**
+   * Помощник ide (не вызывать)
+   */
+  protected function __ideHelper(): void
+  {
+    $this->__wakeup();
+  }
 }

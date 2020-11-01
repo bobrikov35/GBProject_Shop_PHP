@@ -25,7 +25,7 @@ class Cart extends Service
    */
   private function getParams( string $param )
   {
-    return $this->request->getParams( 'get', $param );
+    return $this->container->request->getParams( 'get', $param );
   }
 
   /**
@@ -33,7 +33,7 @@ class Cart extends Service
    */
   private function getCart()
   {
-    return $this->request->getSession('cart');
+    return $this->container->request->getSession( 'cart' );
   }
 
   /**
@@ -59,7 +59,7 @@ class Cart extends Service
   {
     $quantity = $this->getParams('quantity');
 
-    if ( is_numeric($quantity) and (int)$quantity > 0 ) {
+    if ( is_numeric( $quantity ) and (int)$quantity > 0 ) {
       return (int)$quantity;
     }
 
@@ -122,7 +122,7 @@ class Cart extends Service
       return false;
     }
 
-    if ( !key_exists( $id_product, $cart ) ) {
+    if (! key_exists( $id_product, $cart ) ) {
       return false;
     }
 
@@ -154,6 +154,6 @@ class Cart extends Service
    */
   public function clear(): void
   {
-    $this->setSession('cart', []);
+    $this->setSession( 'cart', [] );
   }
 }

@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\engine\App;
-use app\services\{ Request, Paginator };
 use app\repositories\Repository;
 
 /**
@@ -13,8 +12,6 @@ use app\repositories\Repository;
 abstract class Controller
 {
   protected App $app;
-  protected Request $request;
-  protected Paginator $paginator;
 
   /**
    * @param App $app
@@ -22,8 +19,6 @@ abstract class Controller
   public function __construct(App $app)
   {
     $this->app = $app;
-    $this->request = $app->request;
-    $this->paginator = $app->paginator;
   }
 
   /**
@@ -31,7 +26,7 @@ abstract class Controller
    */
   protected function getId(): int
   {
-    return $this->request->getId();
+    return $this->app->request->getId();
   }
 
   /**
@@ -39,7 +34,7 @@ abstract class Controller
    */
   protected function getPage(): int
   {
-    return $this->request->getPage();
+    return $this->app->request->getPage();
   }
 
   /**
@@ -48,7 +43,7 @@ abstract class Controller
    */
   protected function getUser( string $key = '' )
   {
-    return $this->request->getUser( $key );
+    return $this->app->request->getUser( $key );
   }
 
   /**
@@ -57,7 +52,7 @@ abstract class Controller
    */
   protected function getPost( string $param = '' )
   {
-    return $this->request->getPost( $param );
+    return $this->app->request->getPost( $param );
   }
 
   /**
@@ -66,7 +61,7 @@ abstract class Controller
    */
   protected function getSession( string $param = '' )
   {
-    return $this->request->getSession( $param );
+    return $this->app->request->getSession( $param );
   }
 
   /**
@@ -74,7 +69,7 @@ abstract class Controller
    */
   public function isAdmin(): bool
   {
-    return $this->request->isAdmin();
+    return $this->app->request->isAdmin();
   }
 
   /**
@@ -82,7 +77,7 @@ abstract class Controller
    */
   public function isLogin(): bool
   {
-    return $this->request->isLogin();
+    return $this->app->request->isLogin();
   }
 
   /**
@@ -91,7 +86,7 @@ abstract class Controller
    */
   public function permission( string $right ): bool
   {
-    return $this->request->permission( $right );
+    return $this->app->request->permission( $right );
   }
 
   /**
@@ -100,7 +95,7 @@ abstract class Controller
    */
   protected function redirect( string $location = '', string $message = '' ): void
   {
-    $this->request->redirect( $location, $message );
+    $this->app->request->redirect( $location, $message );
   }
 
   /**
@@ -110,8 +105,8 @@ abstract class Controller
    */
   protected function configurePaginator( Repository $repository, string $path, int $page = 1 ): void
   {
-    $this->paginator->setPath( $path );
-    $this->paginator->setItems( $repository, $page );
+    $this->app->paginator->setPath( $path );
+    $this->app->paginator->setItems( $repository, $page );
   }
 
   /**
@@ -148,10 +143,10 @@ abstract class Controller
    */
   private function getAction(): string
   {
-    $action = $this->request->getAction();
+    $action = $this->app->request->getAction();
     $method = $action . "_action";
 
-    if ( !method_exists( $this, $method ) ) {
+    if (! method_exists( $this, $method ) ) {
       $action = $this->getSettings( 'actionDefault' );
     }
 

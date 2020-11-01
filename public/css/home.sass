@@ -1,21 +1,21 @@
 @import var
 
-
-.title
-  min-height: 792px
-  background: url('../images/promo.jpg') no-repeat
-  background-size: cover
-  background-position-y: -35px
-  padding-top: 71px
-  margin-top: -72px
-  &__text
-    color: $textContrastColor
-    font-size: 32px
-    word-spacing: 8px
-    text-align: center
-
-
-.content
-  display: flex
+.home
+  max-width: $siteWidth
+  margin: 0 auto
+  &__title
+    min-height: 792px
+    background: url('../images/promo.jpg') no-repeat
+    background-size: cover
+    background-position-y: -35px
+    padding-top: 71px
+    margin-top: -72px
+    & h1
+      color: $textContrastColor
+      font-size: 32px
+      word-spacing: 8px
+      text-align: center
+  &__content
+    display: flex
   &__text
     text-align: justify

@@ -103,7 +103,7 @@ class Request extends Service
    */
   public function setSession( string $name, $value ): void
   {
-    $_SESSION[$name] = $value;
+    $_SESSION[ $name ] = $value;
   }
 
   /**
@@ -136,16 +136,16 @@ class Request extends Service
    *
    * @param string $list
    * @param string $param
-   * @return array|mixed|null
+   * @return mixed|null
    */
   public function getParams( string $list = 'get', string $param = '' )
   {
-    if ( !in_array( $list, [ 'get', 'post', 'session' ] ) ) {
+    if (! in_array( $list, [ 'get', 'post', 'session' ] ) ) {
       return null;
     }
 
     if ( empty( $param ) ) {
-      return $this->params[$list];
+      return $this->params[ $list ];
     }
 
     if ( empty( $this->params[ $list ][ $param ] ) ) {
@@ -230,7 +230,7 @@ class Request extends Service
    */
   public function redirect( string $location = '', string $message = '' ): void
   {
-    if ( !empty( $location ) ) {
+    if (! empty( $location ) ) {
       header( "location: {$location}" );
 
     } elseif ( empty( $_SERVER[ 'HTTP_REFERER' ] ) ) {

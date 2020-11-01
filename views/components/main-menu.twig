@@ -13,15 +13,17 @@
       <a class="main-menu__item {% if page == 'product' %} main-menu__item_active {% endif %}"
          href="{{ '/product/list/?page=1' }}">Товары</a>
 
-      <a class="main-menu__item {% if page == 'order' %} main-menu__item_active {% endif %}"
-         href="{{ '/order/list/?page=1' }}">Заказы</a>
+      {% if login %}
+        <a class="main-menu__item {% if page == 'order' %} main-menu__item_active {% endif %}"
+           href="{{ '/order/list/?page=1' }}">Заказы</a>
+      {% endif %}
 
       <a class="main-menu__item {% if page == 'cart' %} main-menu__item_active {% endif %}"
          href="{{ '/cart/list/?page=1' }}">Корзина {% if cartCount > 0 %} ({{ cartCount }}) {% endif %}</a>
 
       {% if login %}
         <a class="main-menu__item {% if page == 'user' %} main-menu__item_active {% endif %}"
-           href="{{ '/user' }}">{{ user.name }}</a>
+           href="{{ '/user' }}">{{ user.firstname }}</a>
 
         <a class="main-menu__item" href="{{ '/user/logout' }}">Выйти</a>
 

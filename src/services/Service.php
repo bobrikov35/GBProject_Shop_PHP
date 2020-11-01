@@ -12,7 +12,6 @@ abstract class Service
 {
   protected array $config;
   protected Container $container;
-  protected Request $request;
 
   /**
    * @param array $config
@@ -28,7 +27,6 @@ abstract class Service
   public function setContainer( Container $container ): void
   {
     $this->container = $container;
-    $this->request = $container->request;
   }
 
   /**
@@ -37,7 +35,7 @@ abstract class Service
    */
   protected function setSession( string $name, $value ): void
   {
-    $this->request->setSession( $name, $value );
+    $this->container->request->setSession( $name, $value );
   }
 
   /**
@@ -55,7 +53,6 @@ abstract class Service
    */
   protected function getPost( string $param = '' )
   {
-    return $this->request->getPost( $param );
+    return $this->container->request->getPost( $param );
   }
-
 }

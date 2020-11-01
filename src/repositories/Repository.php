@@ -293,7 +293,7 @@ abstract class Repository
     $params = $this->getParams( $entity->getVars() );
 
     $sql = sprintf(
-      "UPDATE %s SET %s WHERE id = :id",
+      /** @lang text */ "UPDATE %s SET %s WHERE id = :id",
       $this->getTableName(),
       implode( ', ', $this->getSetForUpdate( $params[ 'columns' ], $params[ 'keys' ] ) )
     );

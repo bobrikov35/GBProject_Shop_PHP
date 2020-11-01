@@ -10,8 +10,6 @@ body
   user-select: none
   color: $mainColor
   font-size: 16px
-  display: flex
-  flex-direction: column
 
 a
   text-decoration: none
@@ -23,8 +21,13 @@ h1, h2, h3, h4, h5, h6
 @import objects/footer
 @import objects/buttons
 
+#app
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+
 main
-  max-width: $siteWidth
+  width: 100%
   flex-grow: 1
   padding: 72px 0
   margin: 0 auto

@@ -16,7 +16,7 @@ class User extends Service
    */
   private function getUser( int $id )
   {
-    return $this->container->repositoryUser->getSingle($id);
+    return $this->container->repositoryUser->getSingle( $id );
   }
 
   /**
@@ -51,10 +51,10 @@ class User extends Service
    *
    * @param EUser $user
    */
-  private function fillUserFromPost(EUser $user): void
+  private function fillUserFromPost( EUser $user ): void
   {
-    $user->setFirstname( $this->getPost( 'name' ) );
-    $user->setLastname( $this->getPost( 'name' ) );
+    $user->setFirstname( $this->getPost( 'firstname' ) );
+    $user->setLastname( $this->getPost( 'lastname' ) );
     $user->setEmail( $this->getPost( 'email' ) );
     $user->setPassword( $this->getPost( 'password' ) );
   }
@@ -68,6 +68,7 @@ class User extends Service
   {
     $user = new EUser();
     $this->fillUserFromPost($user);
+
     return $user;
   }
 
@@ -81,7 +82,7 @@ class User extends Service
     $user = $this->getUserFromPost();
     $userEmail = $this->getUserByEmail( $user->getEmail() );
 
-    if ( !empty( $userEmail ) ) {
+    if (! empty( $userEmail ) ) {
       return 0;
     }
 
@@ -123,12 +124,12 @@ class User extends Service
   }
 
   /**
-   * Возвращает хешированный пароль
+   * Возвращает хеш-пароля
    *
    * @param string $password
    * @return string
    */
-  private function getPasswordHash(string $password): string
+  private function getPasswordHash( string $password ): string
   {
     $password = $this->getSettings( 'passwordSol' ) . $password;
     return password_hash( $password, PASSWORD_DEFAULT );
